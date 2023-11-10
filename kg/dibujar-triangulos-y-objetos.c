@@ -295,15 +295,10 @@ glFlush();
 
 
 
-void read_from_file(char *fitx)
+void read_from_file(char *fitx, triobj **selptrptr, triobj **foptrptr)
 {
 int i,retval;
 triobj *optr;
-
-    //unsigned char *kol;
-    //kol[0]=0;
-    //kol[1]=0;
-    //kol[2]=0;
 
     //printf("%s fitxategitik datuak hartzera\n",fitx);
     optr = (triobj *)malloc(sizeof(triobj));
@@ -323,15 +318,9 @@ triobj *optr;
          optr->mptr->m[0] = 1.0;
          optr->mptr->m[5] = 1.0;   
         
-         if(fitx=="k.txt"){
-            foptr_k = optr;
-            sel_ptr_k = optr;
-            kam=1;
-         }else{
-            foptr = optr;
-            sel_ptr = optr;
-            kam=0;
-         }
+         optr->hptr = *selptrptr;
+         *selptrptr = optr;
+         *foptrptr = optr;
          }
      printf("datuak irakurrita\nLecura finalizada\n");
 }
@@ -658,7 +647,7 @@ switch(key)
 	        /*Ask for file*/
 	        printf("idatzi fitxategi izena\n"); 
 	        scanf("%s", &(fitxiz[0]));
-	        read_from_file(fitxiz);
+	        read_from_file(fitxiz, sel_ptr, foptr);
 	        indexx = 0;
                 break;
        /* case 'S':  // save to file
@@ -736,11 +725,15 @@ int retval;
         sel_ptr = 0;
         sel_ptr_k=0;
         foptr_k=0;
-        kam=0;
         aldaketa = 'r';
-        ald_lokala = 1;
-        if (argc>1) read_from_file(argv[1]);
-            else read_from_file("adibideak.txt");
+        ald_lokala = 1;       
+        if (argc>1){
+            if("k.txt"==argv[1])
+            {
+                read_from_file(argv[1], sel_ptr_k, foptr_k);
+            }
+            else read_from_file(argv[1], sel_ptr, foptr);
+        }
 	glutMainLoop();
 
 	return 0;   
