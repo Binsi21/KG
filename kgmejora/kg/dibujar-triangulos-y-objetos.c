@@ -886,6 +886,9 @@ void undo()
     im[4]=0.0;    im[5]=1.0;    im[6]=0.0;    im[7]=0.0;
     im[8]=0.0;    im[9]=0.0;    im[10]=1.0;   im[11]=0.0;
     im[12]=0.0;   im[13]=0.0;   im[14]=0.0;   im[15]=1.0;
+    if (sel_ptr->mptr->hptr->m == sel_ptr_k->mptr->hptr->m){
+        return 0;
+    }
     if(kam==0)
     {
         if(sel_ptr->mptr->hptr->m != im)
