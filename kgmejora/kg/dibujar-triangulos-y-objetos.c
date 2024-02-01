@@ -834,11 +834,14 @@ void z_aldaketa(int dir)
    }else{ //kamara aldatu
         if(modua=='a')
         {
-            if (ald_lokala==1)
+            if (proiekzioa==1)
             {
-                biderkatu_matrizeak(mleb->m, sel_ptr_k->mptr->m, mlag3);
-            }else{
-                biderkatu_matrizeak(mleb->m, mlag3, sel_ptr_k->mptr->m);
+                if (ald_lokala==1)
+                {
+                    biderkatu_matrizeak(mleb->m, sel_ptr_k->mptr->m, mlag3);
+                }else{
+                    biderkatu_matrizeak(mleb->m, mlag3, sel_ptr_k->mptr->m);
+                }
             }
         } 
         mleb->hptr = sel_ptr_k->mptr;
