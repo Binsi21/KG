@@ -645,14 +645,24 @@ void x_aldaketa(int dir)
             mlag4[3]=(sel_ptr->mptr->m[3]);
             mlag4[7]=(sel_ptr->mptr->m[7]);
             mlag4[11]=(sel_ptr->mptr->m[11]);
-            biderkatu_matrizeak(mlag6, mlag4, mlag5);            
-            biderkatu_matrizeak(mleb->m, mlag6, sel_ptr_k->mptr->m);
+            biderkatu_matrizeak(mlag6, mlag4, mlag5);       
+            if (ald_lokala==1)
+            {
+                biderkatu_matrizeak(mleb->m, mlag6, sel_ptr_k->mptr->m);
+            }else{
+                biderkatu_matrizeak(mleb->m, sel_ptr_k->mptr->m, mlag6);
+            }      
         }
         else if(modua=='h')
         {
             if(aldaketa=='r')
             {
-                biderkatu_matrizeak(mleb->m, sel_ptr_k->mptr->m, mlag);
+                if (ald_lokala==1)
+                {
+                    biderkatu_matrizeak(mleb->m, sel_ptr_k->mptr->m, mlag);
+                }else{
+                    biderkatu_matrizeak(mleb->m, mlag, sel_ptr_k->mptr->m);
+                } 
             }else{ //translazioa
                 if (ald_lokala==1)
                 {
@@ -735,9 +745,19 @@ void y_aldaketa(int dir)
     {
         if(aldaketa=='r')
         {
-            biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag);
+            if (ald_lokala==1)
+            {
+                biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag);
+            }else{
+                biderkatu_matrizeak(mleb->m, mlag, sel_ptr->mptr->m);
+            } 
         }else{
-            biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag2);
+            if (ald_lokala==1)
+            {
+                biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag2);
+            }else{
+                biderkatu_matrizeak(mleb->m, mlag2, sel_ptr->mptr->m);
+            }
         }  
         mleb->hptr = sel_ptr->mptr;
         sel_ptr->mptr = mleb;
@@ -752,13 +772,24 @@ void y_aldaketa(int dir)
             mlag4[7]=(sel_ptr->mptr->m[7]);
             mlag4[11]=(sel_ptr->mptr->m[11]);
             biderkatu_matrizeak(mlag6, mlag4, mlag5);
-            biderkatu_matrizeak(mleb->m, mlag6, sel_ptr_k->mptr->m);
+            if (ald_lokala==1)
+            {
+                biderkatu_matrizeak(mleb->m, mlag6, sel_ptr_k->mptr->m);
+            }else{
+                biderkatu_matrizeak(mleb->m, sel_ptr_k->mptr->m, mlag6);
+            } 
+            
         }
         else if(modua=='h')
         {
             if(aldaketa=='r')
             {
-                biderkatu_matrizeak(mleb->m, sel_ptr_k->mptr->m, mlag);
+                if (ald_lokala==1)
+                {
+                    biderkatu_matrizeak(mleb->m, sel_ptr_k->mptr->m, mlag);
+                }else{
+                    biderkatu_matrizeak(mleb->m, mlag, sel_ptr_k->mptr->m);
+                } 
             }else{ //translazioa
                 if (ald_lokala==1)
                 {
@@ -825,9 +856,19 @@ void z_aldaketa(int dir)
     {
         if(aldaketa=='r')
         {
-            biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag);
+            if (ald_lokala==1)
+            {
+                biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag);
+            }else{
+                biderkatu_matrizeak(mleb->m, mlag, sel_ptr->mptr->m);
+            }
         }else{
-            biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag2);
+            if (ald_lokala==1)
+            {
+                biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag2);
+            }else{
+                biderkatu_matrizeak(mleb->m, mlag2, sel_ptr->mptr->m);
+            }
         }
         mleb->hptr = sel_ptr->mptr;
         sel_ptr->mptr = mleb;
