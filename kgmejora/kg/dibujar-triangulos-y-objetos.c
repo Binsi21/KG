@@ -875,14 +875,21 @@ void z_aldaketa(int dir)
    }else{ //kamara aldatu
         if(modua=='a')
         {
-            if (proiekzioa==1)
-            {
+            //if (proiekzioa==1)
+            //{
                 if (ald_lokala==1)
                 {
                     biderkatu_matrizeak(mleb->m, sel_ptr_k->mptr->m, mlag3);
                 }else{
                     biderkatu_matrizeak(mleb->m, mlag3, sel_ptr_k->mptr->m);
                 }
+            //}
+        }else{
+            if (ald_lokala==1)
+            {
+                biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag2);
+            }else{
+                biderkatu_matrizeak(mleb->m, mlag2, sel_ptr->mptr->m);
             }
         } 
         mleb->hptr = sel_ptr_k->mptr;
@@ -925,23 +932,18 @@ void eskalatu(int dir)
 
 void undo()
 {
-    double im[16];
-    im[0]=1.0;    im[1]=0.0;    im[2]=0.0;    im[3]=0.0;
-    im[4]=0.0;    im[5]=1.0;    im[6]=0.0;    im[7]=0.0;
-    im[8]=0.0;    im[9]=0.0;    im[10]=1.0;   im[11]=0.0;
-    im[12]=0.0;   im[13]=0.0;   im[14]=0.0;   im[15]=1.0;
-    if (sel_ptr->mptr->hptr->m == sel_ptr_k->mptr->hptr->m){
-        return 0;
-    }
     if(kam==0)
     {
-        if(sel_ptr->mptr->hptr->m != im)
+        if(sel_ptr->mptr->hptr != 0)
+       { 
             sel_ptr->mptr = sel_ptr->mptr->hptr;
+       } 
     }else{
-        if(sel_ptr_k->mptr->hptr->m != im)
+        if(sel_ptr_k->mptr->hptr != 0)
+       { 
             sel_ptr_k->mptr = sel_ptr_k->mptr->hptr;
+       } 
     }
-        
 }
 
 void perspektiba_aldatu(double *mperspektiba)
