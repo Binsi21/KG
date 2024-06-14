@@ -624,7 +624,12 @@ void x_aldaketa(int dir)
     {
         if(aldaketa=='r')
         {
-            biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag);
+            if (ald_lokala==1)
+            {
+                biderkatu_matrizeak(mleb->m, sel_ptr->mptr->m, mlag);
+            }else{
+                biderkatu_matrizeak(mleb->m, mlag, sel_ptr->mptr->m);
+            } 
         }else{ //translazioa
             if (ald_lokala==1)
             {
